@@ -16,6 +16,19 @@ class AddAlarmViewController: UIViewController {
     @IBOutlet weak var optionTableView: UITableView!
     
     let options = ["Repeat","Label","Sound","Snooze"]
+    var selectedWeekList:[Week]?{
+        didSet{
+            if let list = selectedWeekList{
+                for i in 0..<7{
+                    if list[i].selected == true{
+                        print(list[i].weekTitle)
+                    }
+                }
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,7 +72,8 @@ extension AddAlarmViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let weekSelectionVC = storyboard.instantiateViewController(withIdentifier: "WeekSelectionViewController")
+            let weekSelectionVC = storyboard.instantiateViewController(withIdentifier: "WeekSelectionViewController") as! WeekSelectionViewController
+            weekSelectionVC.customParent = self
             navigationController?.pushViewController(weekSelectionVC, animated: true)
         }
     }
