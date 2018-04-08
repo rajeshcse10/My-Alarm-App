@@ -15,17 +15,12 @@ class AddAlarmViewController: UIViewController {
     
     @IBOutlet weak var optionTableView: UITableView!
     
+    var hourComp = 0
+    var minComp = 0
     let options = ["Repeat","Label","Sound","Snooze"]
-    var selectedWeekList:[Week]?{
+    var selectedWeekListNumber:Int?{
         didSet{
-            if let list = selectedWeekList{
-                for i in 0..<7{
-                    if list[i].selected == true{
-                        print(list[i].weekTitle)
-                    }
-                }
-            }
-            
+            print("selected Number : \(selectedWeekListNumber!)")
         }
     }
     
@@ -38,6 +33,10 @@ class AddAlarmViewController: UIViewController {
         picker.addTarget(self, action: #selector(timeSelected), for: .valueChanged)
         optionTableView.delegate = self
         optionTableView.dataSource = self
+        let date = Date()
+        let calendar = Calendar.current
+        hourComp = calendar.component(.hour, from: date)
+        minComp = calendar.component(.minute, from: date)
     }
     func setNavigationUI(){
         navigationItem.title = "Add Alarm"
@@ -55,7 +54,10 @@ class AddAlarmViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @objc func timeSelected(){
-        
+        let date = picker.date
+        let calendar = Calendar.current
+        hourComp = calendar.component(.hour, from: date)
+        minComp = calendar.component(.minute, from: date)
     }
 
 }
@@ -74,6 +76,7 @@ extension AddAlarmViewController:UITableViewDelegate,UITableViewDataSource{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let weekSelectionVC = storyboard.instantiateViewController(withIdentifier: "WeekSelectionViewController") as! WeekSelectionViewController
             weekSelectionVC.customParent = self
+            weekSelectionVC.selectionNumber = 7
             navigationController?.pushViewController(weekSelectionVC, animated: true)
         }
     }

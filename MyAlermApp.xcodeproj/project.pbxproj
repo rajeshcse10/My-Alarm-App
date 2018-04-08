@@ -15,6 +15,7 @@
 		6D1D7A1D206D1F1700302A6A /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D7A1C206D1F1700302A6A /* AlarmListViewController.swift */; };
 		6D1D7A1F206D1F2600302A6A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D7A1E206D1F2600302A6A /* AddAlarmViewController.swift */; };
 		6D1D7A21206D1F3900302A6A /* WeekSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D7A20206D1F3900302A6A /* WeekSelectionViewController.swift */; };
+		6D98C6D0207A573B008ED9D4 /* AlarmDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D98C6CE207A573B008ED9D4 /* AlarmDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6D1D7A1C206D1F1700302A6A /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
 		6D1D7A1E206D1F2600302A6A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		6D1D7A20206D1F3900302A6A /* WeekSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSelectionViewController.swift; sourceTree = "<group>"; };
+		6D98C6CF207A573B008ED9D4 /* AlarmDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlarmDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				6D1D7A1C206D1F1700302A6A /* AlarmListViewController.swift */,
 				6D1D7A1E206D1F2600302A6A /* AddAlarmViewController.swift */,
 				6D1D7A20206D1F3900302A6A /* WeekSelectionViewController.swift */,
+				6D98C6CE207A573B008ED9D4 /* AlarmDataModel.xcdatamodeld */,
 			);
 			path = MyAlermApp;
 			sourceTree = "<group>";
@@ -100,7 +103,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Rajesh Karmaker";
 				TargetAttributes = {
 					6D1D7A02206D15E400302A6A = {
@@ -150,6 +153,7 @@
 				6D1D7A1D206D1F1700302A6A /* AlarmListViewController.swift in Sources */,
 				6D1D7A21206D1F3900302A6A /* WeekSelectionViewController.swift in Sources */,
 				6D1D7A07206D15E400302A6A /* AppDelegate.swift in Sources */,
+				6D98C6D0207A573B008ED9D4 /* AlarmDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -196,6 +201,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -246,6 +252,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -253,6 +260,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -334,6 +342,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6D98C6CE207A573B008ED9D4 /* AlarmDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6D98C6CF207A573B008ED9D4 /* AlarmDataModel.xcdatamodel */,
+			);
+			currentVersion = 6D98C6CF207A573B008ED9D4 /* AlarmDataModel.xcdatamodel */;
+			path = AlarmDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6D1D79FB206D15E400302A6A /* Project object */;
 }
