@@ -10,18 +10,16 @@ import UIKit
 
 class Week {
     var weekTitle = ""
-    var subTitle = ""
     var selected = false
-    init(title:String,subTitle:String) {
+    init(title:String) {
         weekTitle = title
-        self.subTitle = subTitle
     }
 }
 
 class WeekSelectionViewController: UIViewController {
 
     @IBOutlet weak var weekTableView: UITableView!
-    var selectionNumber:Int?{
+    var selectionNumber:Int32?{
         didSet{
             weekList = WeekSelectionViewController.getWeekList()
             if let num = selectionNumber{
@@ -31,13 +29,12 @@ class WeekSelectionViewController: UIViewController {
                     }
                 }
             }
-            
         }
     }
     var weekList:[Week]?
     var customParent : AddAlarmViewController?
     static func getWeekList()->[Week]{
-        return [Week(title: "Every Sunday",subTitle:"Sun"),Week(title: "Every Monday",subTitle:"Mon"),Week(title: "Every Tuesday",subTitle:"Tue"),Week(title: "Every Wednesday",subTitle:"Wed"),Week(title: "Every Thursday",subTitle:"Thu"),Week(title: "Every Friday",subTitle:"Fri"),Week(title: "Every Saturday",subTitle:"Sat")]
+        return [Week(title: "Every Sunday"),Week(title: "Every Monday"),Week(title: "Every Tuesday"),Week(title: "Every Wednesday"),Week(title: "Every Thursday"),Week(title: "Every Friday"),Week(title: "Every Saturday")]
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,13 +53,13 @@ class WeekSelectionViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let pvc = customParent{
-            var newNumber = 0
+            var newNumber:Int32 = 0
             for i in 0..<7{
                 if weekList![i].selected == true{
                     newNumber +=  (1 << (6-i))
                 }
             }
-            pvc.selectedWeekListNumber = newNumber
+            pvc.weekSelectionNumber = newNumber
         }
     }
 }
