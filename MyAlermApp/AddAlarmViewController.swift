@@ -48,7 +48,6 @@ class AddAlarmViewController: UIViewController {
     
     let options = ["Repeat","Label","Sound","Snooze"]
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var alarm:Alarm?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +56,13 @@ class AddAlarmViewController: UIViewController {
         setNavigationUI()
         picker.datePickerMode = .time
         picker.addTarget(self, action: #selector(timeSelected), for: .valueChanged)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        let date = dateFormatter.date(from: "\(hourComp):\(minComp)")
+        picker.date = date!
         picker.locale = Locale(identifier: "NL")
         optionTableView.delegate = self
         optionTableView.dataSource = self
-        alarm = Alarm(context: context)
     }
     func setNavigationUI(){
         navigationItem.title = "Add Alarm"
@@ -68,20 +70,12 @@ class AddAlarmViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
     }
     @objc func saveAction(){
-        if let weekSelectionNumber = weekSelectionNumber,let alarm = alarm{
-            alarm.alarmID = "\(hourComp):\(minComp):\(weekSelectionNumber)"
-            alarm.active = true
-            alarm.hour = hourComp
-            alarm.minute = minComp
-            alarm.selectionNumber = weekSelectionNumber
-            do{
-                try context.save()
-            }catch{
-                print("Error in saving alarm:\(error)")
-            }
+        if let selectedAlarm = selectedAlarm{
+            saveAlarm(alarm: selectedAlarm)
         }
-        
-        
+        else{
+            saveAlarm(alarm: Alarm(context: context))
+        }
         dismiss(animated: true, completion: nil)
     }
     @objc func cancelAction(){
@@ -96,6 +90,18 @@ class AddAlarmViewController: UIViewController {
         let calendar = Calendar.current
         hourComp = Int32(calendar.component(.hour, from: date))
         minComp = Int32(calendar.component(.minute, from: date))
+    }
+    func saveAlarm(alarm:Alarm) {
+        alarm.alarmID = "\(hourComp):\(minComp):\(weekSelectionNumber!)"
+        alarm.active = true
+        alarm.hour = hourComp
+        alarm.minute = minComp
+        alarm.selectionNumber = weekSelectionNumber!
+        do{
+            try context.save()
+        }catch{
+            print("Error in saving alarm:\(error)")
+        }
     }
 }
 extension AddAlarmViewController:UITableViewDelegate,UITableViewDataSource{
